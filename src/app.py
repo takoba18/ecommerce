@@ -1,9 +1,11 @@
+import sys
+
 from product import *
 
 class App:
     def simulation(self):
         while True:
-            command = input("Enter command: ")
+            command = input("Enter command: ").strip()
             if command.startswith("save_product"):
                 _, product_id, product_name, price = command.split()
                 save_product(product_id, product_name, price)
@@ -32,6 +34,6 @@ class App:
                 _, path = command.split()
                 export_orders_report(path)
             elif command == "exit":
-                break
+                sys.exit()
             else:
                 print("Invalid command")
